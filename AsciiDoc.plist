@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- 
+	Syntax Coloring for AsciiDoc within BBEDit and TextWrangler
+	(C) 2013 ProjectWizards GmbH, Germany. All rights reserved.
+	
+	INSTALLATION:
+	- Copy this file into ~/Library/Application Support/BBEdit/Language Module
+	- Restart BBEdit and set your document language to AsciiDoc
+	
+	HIGHLIGTHING STRATEGY:
+	- All words to be read should be highlighted as Keywords
+	- All words for the structure should be highlighted as comments
+	
+	SUPPORTED LANGUAGE ITEMS: 
+	- All headlines starting with "=" or "."
+	- All emphased text with a quote, asterix and underline.
+	- Some keywords
+	
+	CHANGELOG:
+	- 2013/09/05: fb: Fixed an issue with "link:"
+	- 2013/08/30: fb: Some additions after Team Meeting (if[n]def, endif, ifeval)
+	- 2013/08/27: fb: Add a few more Keywords
+	- 2013/08/26: fb: Initial version
+	
+-->
+<plist version="1.0">
+<dict>
+	<key>BBEditDocumentType</key>
+    <string>CodelessLanguageModule</string>
+	<key>BBLMLanguageDisplayName</key>
+    <string>AsciiDoc</string>
+	<key>BBLMLanguageCode</key>
+    <string>ASCI</string>
+	<key>BBLMSuffixMap</key>
+        <array>
+        <dict>
+        	<key>BBLMLanguageSuffix</key>
+        	<string>.txt</string>
+		</dict>
+		<dict>
+        	<key>BBLMLanguageSuffix</key>
+            <string>.asc</string>
+		</dict>
+        </array>
+    <key>BBLMCommentLineDefault</key>
+    <string>// </string>
+    <key>BBLMCanSpellCheckCodeRuns</key>
+    <true/>
+    <key>BBLMColorsSyntax</key>
+    <true/>
+	<key>BBLMIsCaseSensitive</key>
+	<true/>
+    <key>Language Features</key>
+    <dict>
+    	<key>Identifier and Keyword Character Class</key>
+		<string>A-Za-z\ 0-9_-</string>
+		<key>Comment Pattern</key>
+		<string><![CDATA[(?x-i:
+			(?s:////.*?////)	| (?# AsciiDoc type comments)
+			(?s:\[\[.*?\]\])	| (?# C++ type comments)
+			^\#.*$				| (?# hash type comments)
+			^\:.*$				| (?# colon type comments)
+			(?s:\{.*?\})		| (?# Curly brackets)
+			((https?://|ftp://|www\.|[^\s:=]+@www\.).*?[a-z_\/0-9\-\#=&])(?=(\.|,|;|\?|\!)?("|'|«|»|\[|\s|\r|\n|$))  | (?# URL by @rodneyrehm)
+			link:?\#?\w+			| (?# link w/out hash)
+			^include:.*$		| (?# List of keywords as comments… )
+			^ifeval:.*$			|
+			^ifn?def:.*$		|
+			^endif:.*$			|
+			image:.*$			|
+			footnote:			|
+			xref:				|
+			indexterm:
+		)]]></string>
+    	<key>String Pattern</key>
+        <string><![CDATA[(?x: 
+        	(^=.*) | (^\..*) 		| (?# Headlines + Section Headlines)
+        	<!--	(^\w+::.*) 		| (?# DoubleColon Directives) must be optimzed: not for definition lists -->
+        	(\#[\w-]+) 				| (?# Anchor) 
+            ("(\\"|[^"\r]|\\\r)*") 	| (?# Double-quote) 
+            ('(\\'|[^'\r]|\\\r)*') 	| (?# Single-quote) 
+            (_(\\_|[^_\r]|\\\r)*_) 	| (?# Underline) 
+            (\*+(\\\*|[^\*+\r]|\\\r)*\*+)	| (?# Double Asterix)
+            (\[\[\w+\]\]) 		   	| (?# Anchor) 
+            (?s: (?# Here-document) <<-?(?P<delim>\w+) .*? (?P=delim) )
+        )]]></string>
+	</dict>
+    <key>BBLMKeywordList</key>
+    <array>
+    	<string>NOTE</string>
+		<string>TIP</string>
+		<string>IMPORTANT</string>
+		<string>WARNING</string>
+		<string>CAUTION</string>
+		<string>glossary</string>
+		<string>dedication</string>
+		<string>colophon</string>
+		<string>index</string>
+		<string>bibliography</string>
+	</array>
+</dict>
+</plist>
