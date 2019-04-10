@@ -4,7 +4,7 @@
 
 This is a BBEdit Codeless Language Module that provides good highlighting for asciidoc files with a  in BBEdit (or the more basic, but free, TextWrangler). 
 
-We are using this Language Module with BBEdit at [ProjectWizards](http://projectwizards.net) to write the documentation for [Merlin Project](http://merlinproject.net)
+We are using this Language Module with BBEdit at [ProjectWizards](https://www.projectwizards.net) to write the documentation for [Merlin Project](https://www.projectwizards.net/en/merlin-project). Here you can see one example: https://www.projectwizards.net/en/support/documentation/merlin-project/handbook
 
 ## Installation
 
