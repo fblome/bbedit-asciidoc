@@ -22,12 +22,15 @@ I have written this AppleScript snippet to display the current window of BBEdit 
 			set myFile to get file of front document of window 1
 		end tell
 
-		tell application "Marked 2"
+		tell application "Marked"
 			activate (open myFile)
 		end tell
 	end try
 	
 ----	
+
+In case you have issues getting Marked running with AsciiDoctor please check this page: https://gist.github.com/mojavelinux/6324279
+
 == Links
 
 - BBEdit: http://www.barebones.com/products/bbedit/
