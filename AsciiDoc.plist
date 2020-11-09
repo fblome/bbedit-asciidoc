@@ -57,7 +57,8 @@
         <string><![CDATA[
         (?x: 
         	(^=.*) | (^\..*) 				| (?# Headlines + Section Headlines)
-        	(^\:\w.*\:) 					| (?# Colon Directives)
+        	(^\:\w.*\:) 					| (?# Colon Attributes)
+        	(\:!\w.*\:) 					| (?# Unset Boolean Attributes)
 			(^\b.*\:\:)						| (?# All Directives with a Double Colon)
 			(^\[\#\w.*$) 					| (?# Custom ID)
 			(\[\.\w*\]) 					| (?# Custom Formatting)
