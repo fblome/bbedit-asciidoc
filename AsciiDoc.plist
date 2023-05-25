@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <!-- 
-	Syntax Coloring for AsciiDoc within BBEDit and TextWrangler
-	(C) 2013-2020 ProjectWizards GmbH, Germany. All rights reserved.
+	Syntax Coloring for AsciiDoc within BBEDit
+	(C) 2013-2023 ProjectWizards GmbH, Germany. All rights reserved.
 	
 	INSTALLATION:
 	- Copy this file into ~/Library/Application Support/BBEdit/Language Module
@@ -44,30 +44,36 @@
     <key>Language Features</key>
     <dict>
     	<key>Identifier and Keyword Character Class</key>
-		<string>A-Za-z0-9_-</string>
+		<string>\=</string>
 
 		<key>Comment Pattern</key>
 		<string><![CDATA[
 		(?x:
-			(^\/\/.*$) 							| (?# Line Comment)
-			(^\-\-\-.*$) 						| (?# I like HR shown as Comment)
+			(^\/\/.*$) 						| (?# Line Comment)
+			(^\-\-\-.*$) 					| (?# I like the horizontal ruler to be shown as Comment)
 		)]]></string>
 
     	<key>String Pattern</key>
         <string><![CDATA[
         (?x: 
-        	(^=.*) | (^\..*) 				| (?# Headlines + Section Headlines)
+        	(^=.*) | (^\.\S.*) 				| (?# Headlines + Section Headlines)
         	(^\:\w.*\:) 					| (?# Colon Attributes)
         	(\:!\w.*\:) 					| (?# Unset Boolean Attributes)
 			(^\b.*\:\:)						| (?# All Directives with a Double Colon)
 			(^\[\#\w.*$) 					| (?# Custom ID)
 			(\[\.\w*\]) 					| (?# Custom Formatting)
+			(<.*>)							| (?# Single Chevrons)
+			(<<.*>>)						| (?# Double Chevrons)
         	(\{[a-zA-Z0-9-_]*\}) 			| (?# Variables in curly brackets) 
         	(\[[a-zA-Z ,0-9-_]*\]) 			| (?# All in Brackets) 
-            (_(\\_|[^_\r]|\\\r)*_) 			| (?# Underline) 
-            (\*+(\\\*|[^\*+\r]|\\\r)*\*+)	| (?# Double Asterix)
-        	(icon\:)
+        	(_(\\_|[^_\r]|\\\r)*_) 			| (?# Underline) 
+        	(\*+(\\\*|[^\*+\r]|\\\r)*\*+)	| (?# Double Asterix)
+        	(\w*:+\w*\.\w*\[.*\])			| (?# words with double-colon and options in sq.brackets)
+        	(\w*:+\[.*\])					| (?# words with colon and options in sq.brackets)
+			(\w*:+\w*\[.*\])				| (?# 2 words with colon and options in sq.brackets)
+
+			(icon\:)
         )]]></string>
-	</dict>
+ 	</dict>
 </dict>
 </plist>
