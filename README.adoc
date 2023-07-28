@@ -1,5 +1,9 @@
 = Syntax Coloring for AsciiDoc in BBEdit
 
+image:https://www.adoc-studio.app/images/icons/adoc-128.png[width=32]
+In favour for the all new application https://www.adoc-Studio.app[adoc Studio] the active development of this CLM has been stopped.
+
+
 == Introduction
 
 This is a BBEdit Codeless Language Module that provides good highlighting for asciidoc files with a  in BBEdit (or the more basic, but free, TextWrangler). 
